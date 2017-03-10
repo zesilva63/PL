@@ -27,8 +27,8 @@ BEGIN {
 	
 
 END {
-	#for (i in cant) print i 
-	#print length(cant)
+	for (i in cant) print i 
+	print length(cant)
 
-	for (j in aut) printf("%s   ->   %s ",aut,length(aut[a]))  
+	#for (j in aut) printf("%s   ->   %s ",aut,length(aut[a]))  
 }
