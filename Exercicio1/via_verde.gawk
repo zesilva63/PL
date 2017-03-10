@@ -1,7 +1,7 @@
 #!/usr/bin/gawk -f
 
 BEGIN {
-
+    PROCINFO["sorted_in"]= "@ind_str_asc";
 }
 
 # Verificar entradas em cada dia do mês.
