@@ -52,32 +52,33 @@ BEGIN {
 
 
 END {
-#    print html_start > "index.html"
-#    print "<h1> Extracto Mensal Via Verde </h1> " > "index.html"
-#    print "<h3> Nome: " nome " </h3> " > "index.html"
-#    print "<li> <a href='entradas.html'> Número de Entradas por dia do mês </a></li>\n" > "index.html"
-#    print "<li> <a href='locais.html'> Lista de Locais de Saida </a></li>\n" > "index.html"
-#    print html_end > "index.html"
-#
-#
-#    print html_start > "entradas.html"
-#    print "<h1> Lista de Entradas por dia </h1>" > "entradas.html"
-#    print table_entradas_start > "entradas.html"
-#    for(e in dias)
-#        print "<tr> <td> " controi(e) " </td> <td> " dias[e] "</td> </tr>" > "entradas.html"
-#    print table_end > "entradas.html"
-#    print html_end > "entradas.html"
-#
-#
-#    print html_start > "locais.html"
-#    print "<h1> Lista de Locais de Saida </h1>" > "locais.html"
-#    print table_locais_start > "locais.html"
-#    for(i in locais)
-#        print "<tr> <td>" i "</td> </tr>" > "locais.html"
-#    print table_end > "locais.html"
-#    print html_end > "locais.html"
+    print html_start > "index.html"
+    print "<h1 align=\"center\"> Extracto Mensal Via Verde </h1> <hr> " > "index.html"
+    print "<h3> Nome </h3> " > "index.html"
+    print "<p> " nome "</p> " > "index.html"
+    print "<hr> <h3> Opções </h3>" > "index.html"
+    print "<li> <a href='entradas.html'> Número de Entradas por dia do mês </a></li>\n" > "index.html"
+    print "<li> <a href='locais.html'> Lista de Locais de Saida </a></li>\n" > "index.html"
+    print "<hr> <h3> Gastos Efetuados </h3> " > "index.html"
+    print html_end > "index.html"
 
-    print nome;
+
+    print html_start > "entradas.html"
+    print "<h1> Lista de Entradas por dia </h1>" > "entradas.html"
+    print table_entradas_start > "entradas.html"
+    for(e in dias)
+        print "<tr> <td> " controi(e) " </td> <td> " dias[e] "</td> </tr>" > "entradas.html"
+    print table_end > "entradas.html"
+    print html_end > "entradas.html"
+
+
+    print html_start > "locais.html"
+    print "<h1> Lista de Locais de Saida </h1>" > "locais.html"
+    print table_locais_start > "locais.html"
+    for(i in locais)
+        print "<tr> <td>" i "</td> </tr>" > "locais.html"
+    print table_end > "locais.html"
+    print html_end > "locais.html"
 
     for (i = 0;i < var; i++) {
         total[meses[i]] += precos[i];
