@@ -6,24 +6,24 @@ function normaliza_float(num) {
 
 
 function get_mes(valor) {
-    mes["01"] = "Janeiro de ";
-    mes["02"] = "Fevereiro de ";
-    mes["03"] = "Março de ";
-    mes["04"] = "Abril de ";
-    mes["05"] = "Maio de ";
-    mes["06"] = "Junho de ";
-    mes["07"] = "Julho de ";
-    mes["08"] = "Agosto de ";
-    mes["09"] = "Setembro de ";
-    mes["10"] = "Outubro de ";
-    mes["11"] = "Novembro de ";
-    mes["12"] = "Dezembro de ";
+    mes["01"] = "Janeiro";
+    mes["02"] = "Fevereiro";
+    mes["03"] = "Março";
+    mes["04"] = "Abril";
+    mes["05"] = "Maio";
+    mes["06"] = "Junho";
+    mes["07"] = "Julho";
+    mes["08"] = "Agosto";
+    mes["09"] = "Setembro";
+    mes["10"] = "Outubro";
+    mes["11"] = "Novembro";
+    mes["12"] = "Dezembro";
     return mes[valor];
 }
 
 function controi(data) {
     split(data,a,"-");
-    return a[3] " de " get_mes(a[2]) a[1];
+    return a[3] " de " get_mes(a[2]) " de " a[1];
 }
 
 function reordena(data) {

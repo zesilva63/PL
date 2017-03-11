@@ -52,6 +52,15 @@ BEGIN {
 
 
 END {
+
+    for (i = 0;i < var; i++) {
+        total[meses[i]] += precos[i];
+
+        if(tipo[i] == "Parques de estacionamento") {
+            parques += precos[i];
+        }
+    }
+
     print html_start > "index.html"
     print "<h1 align=\"center\"> Extracto Mensal Via Verde </h1> <hr> " > "index.html"
     print "<h3> Nome </h3> " > "index.html"
@@ -60,6 +69,12 @@ END {
     print "<li> <a href='entradas.html'> Número de Entradas por dia do mês </a></li>\n" > "index.html"
     print "<li> <a href='locais.html'> Lista de Locais de Saida </a></li>\n" > "index.html"
     print "<hr> <h3> Gastos Efetuados </h3> " > "index.html"
+    for(p in total) {
+        if(length(p) > 0)
+            print "<p> Total gasto em " get_mes(p) ": " total[p] " </p> " > "index.html"
+        else print "<p> Total gasto sem especificação da data: " total[p] " </p>" > "index.html"
+    }
+    print "<p> Gastos em Parques: " parques " </p>" > "index.html"
     print html_end > "index.html"
 
 
@@ -80,16 +95,4 @@ END {
     print table_end > "locais.html"
     print html_end > "locais.html"
 
-    for (i = 0;i < var; i++) {
-        total[meses[i]] += precos[i];
-
-        if(tipo[i] == "Parques de estacionamento") {
-            parques += precos[i];
-        }
     }
-    print "TOTAL EM PARQUES: " parques "\n";
-    for(p in total)
-        if(length(p) > 0)
-            print "Total em " get_mes(p) "portagens -> " total[p]
-        else print "TOTAL SEM ESPECIFICACAO -> " total[p]
-}
