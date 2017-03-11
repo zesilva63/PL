@@ -9,6 +9,7 @@ BEGIN {
     html_end = "</body> </html>"
     table_locais_start = "<table style=\"width:30%\"> <caption>Locais de Saida</caption> <tr> <th>Local</th> </tr>"
     table_entradas_start = "<table style=\"width:30%\"> <caption>Entradas de cada dia</caption> <tr> <th>Dia</th> <th>Nr de Entradas</th> </tr>"
+    table_viagens_start = "<table style=\"width:30%\"> <caption>Viagens efetuadas no mês por percurso</caption> <tr> <th>Percurso</th> <th>Nr de Viagens</th> </tr>"
     table_end = "</table>"
 
     var = 0;
@@ -59,6 +60,9 @@ END {
         if(tipo[i] == "Parques de estacionamento") {
             parques += precos[i];
         }
+        if(length(entrada[i]) > 0 && length(saida[i]) > 0) {
+            viagens[entrada[i]" - "saida[i]]++;
+        }
     }
 
     print html_start > "index.html"
@@ -68,6 +72,7 @@ END {
     print "<hr> <h3> Opções </h3>" > "index.html"
     print "<li> <a href='entradas.html'> Número de Entradas por dia do mês </a></li>\n" > "index.html"
     print "<li> <a href='locais.html'> Lista de Locais de Saida </a></li>\n" > "index.html"
+    print "<li> <a href='viagens.html'> Estatisticas sobre Viagens </a></li>\n" > "index.html"
     print "<hr> <h3> Gastos Efetuados </h3> " > "index.html"
     for(p in total) {
         if(length(p) > 0)
@@ -79,7 +84,7 @@ END {
 
 
     print html_start > "entradas.html"
-    print "<h1> Lista de Entradas por dia </h1>" > "entradas.html"
+    print "<h1> Lista de Entradas por dia </h1>  <hr>" > "entradas.html"
     print table_entradas_start > "entradas.html"
     for(e in dias)
         print "<tr> <td> " controi(e) " </td> <td> " dias[e] "</td> </tr>" > "entradas.html"
@@ -88,11 +93,21 @@ END {
 
 
     print html_start > "locais.html"
-    print "<h1> Lista de Locais de Saida </h1>" > "locais.html"
+    print "<h1> Lista de Locais de Saida </h1> <hr>" > "locais.html"
     print table_locais_start > "locais.html"
     for(i in locais)
         print "<tr> <td>" i "</td> </tr>" > "locais.html"
     print table_end > "locais.html"
     print html_end > "locais.html"
+
+
+    print html_start > "viagens.html"
+    print "<h1> Estatisticas sobre viagens </h1> <hr>" > "viagens.html"
+    print table_viagens_start > "viagens.html"
+    for(viagem in viagens)
+        print "<tr> <td>" viagem "</td> <td>" viagens[viagem] "</td> </tr>" > "viagens.html"
+    print table_end > "viagens.html"
+    print html_end > "viagens.html"
+
 
     }
