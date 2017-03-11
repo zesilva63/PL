@@ -5,7 +5,7 @@
 BEGIN {
     html_start = "<html> <head> <meta charset='UTF-8'/>  <style> table, th, td { border: 1px solid black; border-collapse: collapse; } th, td { padding: 5px; } th { text-align: left; } </style> </head> <body>"
     html_end = "</body>\n </html>"
-    table_locais_start = "<table style=\"width:30%\"> <caption>Locais de Saida</caption> <tr> <th>Local</th> </tr>"
+    table_locais_start = "<table style=\"width:20%\"> <caption>Locais de Saida</caption> <tr> <th>Local</th> </tr>"
     table_entradas_start = "<table style=\"width:30%\"> <caption>Entradas de cada dia</caption> <tr> <th>Dia</th> <th>Nr de Entradas</th> </tr>"
     table_viagens_start = "<table style=\"width:30%\"> <caption>Viagens efetuadas no mês por percurso</caption> <tr> <th>Percurso</th> <th>Nr de Viagens</th> </tr>"
     table_end = "</table>\n"
@@ -29,10 +29,10 @@ END {
     printf(h3,"Gastos Efetuados") > "index.html"
     for(p in total) {
         if(length(p) > 0)
-            print "<p> Total gasto em " get_mes(p) ": " total[p] " </p> " > "index.html"
-        else print "<p> Total gasto sem especificação da data: " total[p] " </p>" > "index.html"
+            print "<p> Total gasto em " get_mes(p) ": " total[p] "€ </p> " > "index.html"
+        else print "<p> Total gasto sem especificação da data: " total[p] "€ </p>" > "index.html"
     }
-    print "<p> Gastos em Parques: " parques " </p>" > "index.html"
+    print "<p> Gastos em Parques: " parques "€ </p>" > "index.html"
     print html_end > "index.html"
 
 
