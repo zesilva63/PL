@@ -43,11 +43,11 @@ END {
     for (i = 0;i < var; i++) {
         total[meses[i]] += precos[i];
 
-        if(tipo[i] == "Parques de estacionamento") {
+        if(tipo[i] == "Parques de estacionamento")
             parques += precos[i];
-        }
-        if(length(entrada[i]) > 0 && length(saida[i]) > 0) {
+
+        if(length(entrada[i]) > 0 && length(saida[i]) > 0)
             viagens[entrada[i]" - "saida[i]]++;
-        }
     }
+
 }

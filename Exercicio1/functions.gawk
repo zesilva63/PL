@@ -1,9 +1,9 @@
-# Substitui "," por "." na importância para poderem ser efetuadas contas sobre o valor.
+#!/usr/bin/gawk -f
+
 function normaliza_float(num) {
     gsub(/,/, ".",num)
     return num;
 }
-
 
 function get_mes(valor) {
     mes["01"] = "Janeiro";
