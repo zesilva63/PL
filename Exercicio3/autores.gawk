@@ -18,19 +18,22 @@ BEGIN {
 	}
 }
 
+/^title/{
+	title = $2;
+}
 
-#{
-#	if($1 == "author"){
-#		#y = split($2,b,";")
-#		aut[a]++
-#		for( q = 0; q <= NF ; q++)
-#			if ($2 == aut[$2]) {
-#		   	if ($1 == "author"){
-#		   	aut[a[$2]]++
-#		   	}
-#		}
-#	}
-#}
+{
+	if($1 == "author"){ 
+		if(listaTit[$2] == null) {
+			listaTit[$2] = title;
+		}
+		else {
+			listaTit[$2] = listaTit[$2] " , " title;
+		}
+	}
+
+}
+
 
 	
 
@@ -61,4 +64,19 @@ END {
 
 
 	#for (j in aut) printf("%s   ->   %s ",aut,length(aut[a]))  
+
+
+	#Alinea C HTML
+
+	print "<h1> Alinea C) </h1>"
+	print "<h2> Escrever o nome de cada autor seguido das suas canções.  </h2>"
+	print "<ul>"
+		for (i=1; i<=n; i++) {
+		 print "<li><b>" sorted[i] "</b> : " listaTit[sorted[i]]   "</li>"
+	}
+
+	print "</ul>"
+
+
+
 }
