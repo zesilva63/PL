@@ -1,0 +1,115 @@
+%option noyywrap
+
+%{
+
+#include <string.h>
+#include <stdio.h>
+#include <glib.h>
+
+void imprime_dicionario();
+gboolean imprime_verbo(gpointer k, gpointer v, gpointer d);
+void adicionaVerbo(char* texto, int posicao);
+void begin_html();
+void end_html();
+
+GTree* verbos;
+
+FILE* inicio;
+FILE* texto;
+FILE* tabela;
+
+%}
+
+
+%%
+
+\'m     { fprintf(texto,"%s"," am"); }
+
+\'s     { fprintf(texto,"%s"," is"); }
+
+\'re    { fprintf(texto,"%s"," are"); }
+
+\'ll    { fprintf(texto,"%s"," will"); }
+
+\'ve    { fprintf(texto,"%s"," have"); }
+
+can\'t  { fprintf(texto,"%s","nnot"); }
+
+n\'t    { fprintf(texto,"%s"," not"); }
+
+\'d     { fprintf(texto,"%s"," had"); }
+
+(to|can|could|shall|should|will|would|may|might)\ [a-z]*     { adicionaVerbo(yytext,1); }
+
+(do|does|did)\ [a-z]*\ [a-z]*     { adicionaVerbo(yytext,2); }
+
+%%
+
+int main(int argc, char**argv) {
+
+    verbos = g_tree_new((GCompareFunc)g_ascii_strcasecmp);
+
+    inicio = fopen("index.html","w");
+    tabela = fopen("tabela.html","w");
+    texto = fopen("result.txt","w");
+    yyout = texto;
+
+    if(argc == 2)
+        yyin = fopen(argv[1],"r");
+
+    yylex();
+
+    begin_html();
+    imprime_dicionario();
+    end_html();
+
+    return 0;
+}
+
+void adicionaVerbo(char* texto, int posicao) {
+
+    char* verbo = (char*) malloc(100 * sizeof(char));
+    gpointer existe = NULL;
+
+    char* palavra = strtok(texto," ");
+    while(palavra != NULL && posicao) {
+        palavra = strtok(NULL," ");
+        posicao--;
+    }
+
+    if(palavra)
+        verbo = strdup(palavra);
+
+    existe = g_tree_lookup(verbos,verbo);
+
+    if(!existe)
+        g_tree_insert(verbos,verbo," ");
+
+}
+
+void imprime_dicionario() {
+    g_tree_foreach(verbos, imprime_verbo, NULL);
+}
+
+gboolean imprime_verbo(gpointer k, gpointer v, gpointer d) {
+    fprintf(tabela,"<tr> <td> %s </td> </tr>",k);
+    return FALSE;
+}
+
+void begin_html() {
+    char* inicio_html = "<html> <head> <meta charset='UTF-8'/>  <style> table, th, td { border: 1px solid black; border-collapse: collapse; } th, td { padding: 5px; } th { text-align: left; } </style> </head> <body>";
+    char* tabela_verbos = "<table style=\"width:20%\"> <caption> Lista de Verbos</caption> <tr> <th>Verbo</th> </tr>";
+
+    fprintf(inicio,"%s",inicio_html);
+    fprintf(inicio,"<h1 align=\"center\"> Processador de Inglês Corrente </h1>\n<hr>");
+    fprintf(inicio,"<li> <a href='%s'> %s </a></li>\n","result.txt","Texto com Expansão das Contrações");
+    fprintf(inicio,"<li> <a href='%s'> %s </a></li>\n","tabela.html","Lista de Verbos");
+    fprintf(tabela,tabela_verbos);
+}
+
+void end_html() {
+    char* texto = "</body>\n </html>";
+    fprintf(inicio,"%s",texto);
+    fprintf(tabela,"</table>\n");
+    fprintf(tabela,"%s",texto);
+}
