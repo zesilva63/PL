@@ -20,7 +20,6 @@ FILE* tabela;
 
 %}
 
-
 %%
 
 \'m     { fprintf(texto,"%s"," am"); }
@@ -33,15 +32,15 @@ FILE* tabela;
 
 \'ve    { fprintf(texto,"%s"," have"); }
 
-can\'t  { fprintf(texto,"%s","nnot"); }
+\'d     { fprintf(texto,"%s"," had"); }
 
 n\'t    { fprintf(texto,"%s"," not"); }
 
-\'d     { fprintf(texto,"%s"," had"); }
+can\'t  { fprintf(texto,"%s","nnot"); }
 
-(to|can|could|shall|should|will|would|may|might)\ [a-z]*     { adicionaVerbo(yytext,1); }
+(to|can|could|shall|should|will|would|may|might)\ [a-z]*     { ECHO; adicionaVerbo(yytext,1); }
 
-(do|does|did)\ [a-z]*\ [a-z]*     { adicionaVerbo(yytext,2); }
+(do|does|did)\ [a-z]*\ [a-z]*     { ECHO; adicionaVerbo(yytext,2); }
 
 %%
 
@@ -77,7 +76,7 @@ void adicionaVerbo(char* texto, int posicao) {
         posicao--;
     }
 
-    if(palavra)
+    if(palavra && (strlen(palavra) > 1))
         verbo = strdup(palavra);
 
     existe = g_tree_lookup(verbos,verbo);
@@ -103,7 +102,9 @@ void begin_html() {
     fprintf(inicio,"<h1 align=\"center\"> Processador de Inglês Corrente </h1>\n<hr>");
     fprintf(inicio,"<li> <a href='%s'> %s </a></li>\n","result.txt","Texto com Expansão das Contrações");
     fprintf(inicio,"<li> <a href='%s'> %s </a></li>\n","tabela.html","Lista de Verbos");
+
     fprintf(tabela,"%s",inicio_html);
+    fprintf(tabela,"<li> <a href='%s'> %s </a></li>\n","index.html","Voltar");
     fprintf(tabela,"<h1> Lista de Verbos </h1>\n");
     fprintf(tabela,"<table style=\"width:20%\"> <tr> <th>Verbo</th> </tr>");
 }
