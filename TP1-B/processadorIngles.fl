@@ -36,7 +36,12 @@ FILE* tabela;
 
 n\'t    { fprintf(texto,"%s"," not"); }
 
-can\'t  { fprintf(texto,"%s","nnot"); }
+can\'t  { fprintf(texto,"%s","cannot"); }
+
+haven\'t  { fprintf(texto,"%s","have not"); }
+
+won\'t  { fprintf(texto,"%s","will not"); }
+
 
 (to|can|could|shall|should|will|would|may|might)\ [a-z]*     { ECHO; adicionaVerbo(yytext,1); }
 
