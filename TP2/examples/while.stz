@@ -1,0 +1,10 @@
+Int a;
+HICODE
+$(a < 10) {
+  a = a + 1;
+  ?(a == 5) {
+    VISIVEL a;
+  }
+}
+VISIVEL a;
+KTHKBYE

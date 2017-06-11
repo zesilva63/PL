@@ -1,0 +1,12 @@
+Int a;
+Int b;
+func max {
+  a = b;
+}
+HICODE
+  a = 10;
+  b = 20;
+  call max;
+  VISIVEL a;
+KTHKBYE
+

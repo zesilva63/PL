@@ -1,0 +1,8 @@
+Int a;
+Int b;
+HICODE
+  LEARNTHZ a ;
+  LEARNTHZ b ;
+  ?(a >= b) { VISIVEL a; }
+  ?(b > a) { VISIVEL b; }
+KTHKBYE

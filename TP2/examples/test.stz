@@ -1,0 +1,10 @@
+Int a;
+Int b=20;
+Int c=10;
+HICODE
+VISIVEL "Números pares de 0 até 10: ";
+$(a <= 10) {
+  ?((a % 2) == 0) { VISIVEL a; VISIVEL " "; }
+  a = a + 1;
+}
+KTHKBYE

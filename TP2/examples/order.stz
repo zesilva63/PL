@@ -1,0 +1,39 @@
+Int i;
+Int j;
+Int max;
+Int maxid; 
+Int a[10];
+Int b[10];
+func maximum {
+  j = 0;
+  max = 0;
+  $(j < 10) {
+    ?(a[j] > max) {
+      max = a[j];
+      maxid = j;
+    }
+    j = j + 1;
+
+  }
+}
+HICODE
+  $(i < 10) {
+    LEARNTHZ a[i];
+    i = i + 1;
+  }
+
+  i = 0;
+  $(i < 10) {
+    call maximum;
+    a[maxid] = 0;
+    b[(9 - i)] = max;
+    i = i + 1;
+  }
+
+  i = 0;
+  $ (i < 10) {
+    VISIVEL b[i];
+    VISIVEL "\n";
+    i = i + 1;
+  }
+KTHKBYE
