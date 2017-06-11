@@ -11,7 +11,7 @@
   int getVector(char *);
   int getVectorCol(char *);
 
-  int nivel;
+  int label;
 
   typedef struct VectorI {
     int add;
@@ -44,7 +44,6 @@ siplp: intvars funcs HICODE insts KTHKBYE { printf("%sjump inic\n%sstart\ninic: 
 
 intvars: Int intvar ';'             { $$ = $2; }
        | Int intvar ';' intvars     { asprintf(&$$, "%s%s", $2, $4); }
-       |                            { $$ = ""; }
        ;
 
 intvar: VAR                         { asprintf(&$$, "\tpushi 0\n"); addVar($1); }
@@ -63,21 +62,17 @@ func: f STRING '{' insts '}'        { asprintf(&$$, "%s: nop\n%s\treturn\n", $2,
 
 insts: inst                         { $$ = $1; }
      | insts inst                   { asprintf(&$$, "%s%s", $1, $2); }
-     |                              { $$ = ""; }
-     ;
-
+     
 inst: VISIVEL factor ';'                 { asprintf(&$$, "%s\twritei\n", $2);}
     | VISIVEL '"' STRING '"' ';'         { asprintf(&$$, "\tpushs \"%s\"\n\twrites\n", $3); }
     | LEARNTHZ  data  ';'                { asprintf(&$$, "%s\tread\n\tatoi\n\%s", $2.begin, $2.end); }
     | data '=' expr ';'                  { asprintf(&$$, "%s%s%s", $1.begin, $3, $1.end); }
-    | '?''('expr')' '{' insts '}'        { asprintf(&$$, "%s\tjz nivel%d\n%slabel%d: ", $3, nivel,
-                                           $6, nivel); nivel++; }
-    | '?''('expr')''{' insts '}''_''{' insts '}'    
-    { asprintf(&$$, "%s\tjz nivel%d\n%sjump nivel%d\nlabel%d: %slabel%d: ",
-              $3, nivel, $6, nivel + 1, nivel, $10, nivel + 1); nivel += 2; }
-    | '$''('expr')' '{' insts '}'                   
-    { asprintf(&$$, "nivel%d: %s\tjz nivel%d\n%sjump nivel%d\nlabel%d: ",
-     nivel, $3, nivel + 1, $6, nivel, nivel + 1); nivel += 2; }
+    | '?''('expr')' '{' insts '}'        { asprintf(&$$, "%s\tjz label%d\n%slabel%d: ", $3, label,
+                                           $6, label); label++; }
+    | '?''('expr')''{' insts '}''_''{' insts '}'    { asprintf(&$$, "%s\tjz label%d\n%sjump label%d\nlabel%d: %slabel%d: ",
+              $3, label, $6, label + 1, label, $10, label + 1); label += 2; }
+    | '$''('expr')' '{' insts '}'                   { asprintf(&$$, "label%d: %s\tjz label%d\n%sjump label%d\nlabel%d: ",
+     label, $3, label + 1, $6, label, label + 1); label += 2; }
     | call STRING ';'              { asprintf(&$$, "\tpusha %s\n\tcall\n\tnop\n", $2); }
     |                              { $$ = ""; }
     ;
@@ -92,7 +87,6 @@ data: VAR                           { asprintf(&$$.begin, "");
 expr: parcel                 { $$ = $1; }
     | expr '+' parcel        { asprintf(&$$, "%s%s\tadd\n", $1, $3); }
     | expr '-' parcel        { asprintf(&$$, "%s%s\tsub\n", $1, $3); }
-    ;
 
 parcel: parcel '*' factor    { asprintf(&$$, "%s%s\tmul\n", $1, $3); }
       | parcel '/' factor    { asprintf(&$$, "%s%s\tdiv\n", $1, $3); }
@@ -103,8 +97,9 @@ parcel: parcel '*' factor    { asprintf(&$$, "%s%s\tmul\n", $1, $3); }
       | parcel '<''=' factor { asprintf(&$$, "%s%s\tinfeq\n", $1, $4); }
       | parcel '!''=' factor { asprintf(&$$, "%s%s\tequal\npushi 1\ninf\n", $1, $4); }
       | parcel '=''=' factor { asprintf(&$$, "%s%s\tequal\n", $1, $4); }
+      | parcel '&' factor    { asprintf(&$$, "%s%s\tadd\n\tpushi 2\n\tequal\n", $1, $3); }
+      | parcel '|' factor    { asprintf(&$$, "%s%s\tadd\n\tpushi 0\n\tsup\n", $1, $3); }
       | factor               { $$ = $1; }
-      ;
 
 factor: NUM                           { asprintf(&$$, "\tpushi %d\n", $1); }
       | VAR                           { asprintf(&$$, "\tpushg %d\n", getVar($1)); }
@@ -130,7 +125,7 @@ int main() {
     variaveis    = g_hash_table_new(g_str_hash, g_str_equal);
     vectores     = g_hash_table_new(g_str_hash, g_str_equal);
     stackPointer = 0;
-    nivel        = 0;
+    label        = 0;
 
     yyparse();
     return 0;
@@ -160,7 +155,7 @@ void addVector(char * var, int lin, int col) {
 }
 
 int getVar(char * var) {
-    return ((int *) g_hash_table_lookup(variaveis, var));
+    return *((int *) g_hash_table_lookup(variaveis, var));
 }
 
 int getVector(char * var) {
