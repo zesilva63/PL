@@ -1,0 +1,12 @@
+Int FRTS;
+Int SCND;
+func max {
+  FRTS = SCND;
+}
+HICODE
+  FRTS = 10;
+  SCND = 20;
+  call max;
+  VISIVEL FRTS;
+KTHKBYE
+

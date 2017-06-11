@@ -1,0 +1,28 @@
+Int i;
+Int impar;
+Int n;
+HICODE
+
+
+VISIVEL "INZERTZ NUMB";
+LEARNTHZ i;
+
+$(i != 0){
+	VISIVEL "MOR";
+	VISIVEL i;
+	VISIVEL " \n";
+	LEARNTHZ impar;
+	
+	?( (impar % 2) == 1 ){
+		VISIVEL "IMP:";
+		VISIVEL impar;
+		VISIVEL " \n";
+		n = n + 1;
+	}
+	i = i - 1;
+}
+
+VISIVEL "QUANTZ: ";
+VISIVEL n;
+
+KTHKBYE

@@ -1,0 +1,23 @@
+Int i;
+Int MINZ[2];
+HICODE
+
+VISIVEL "HOW NUMBZ?\n";
+
+LEARNTHZ i;
+
+$(i != 0){
+	VISIVEL "MIZ THZ MHUZ NUMB";
+	VISIVEL i;
+	VISIVEL " \n";
+	MINZ[0] = i;
+	LEARNTHZ MINZ[1];
+	?( MINZ[1] < MINZ[0] ){ MINZ[0] = MINZ[1]; }
+	i = i - 1;	
+}
+
+VISIVEL "MINZ ITZ: ";
+VISIVEL MINZ[0];
+
+
+KTHKBYE

@@ -1,0 +1,132 @@
+	pushi 10
+	pushn 10
+	pushn 10
+	pushi 0
+	pushi 0
+	pushi 0
+	pushi 0
+jump inic
+MAXMILIANZ: nop
+	pushgp
+	pushi 1
+	padd
+	pushi 0
+	loadn
+	storeg 24
+	pushi 0
+	storeg 23
+	pushi 0
+	storeg 22
+label1: 	pushg 22
+	pushg 0
+	equal
+pushi 1
+inf
+	jz label2
+	pushgp
+	pushi 1
+	padd
+	pushg 22
+	loadn
+	pushg 24
+	sup
+	jz label0
+	pushgp
+	pushi 1
+	padd
+	pushg 22
+	loadn
+	storeg 24
+	pushg 22
+	storeg 23
+label0: 	pushg 22
+	pushi 1
+	add
+	storeg 22
+jump label1
+label2: 	return
+start
+inic: 	pushs "TELZ"
+	writes
+	pushg 0
+	writei
+	pushs " NUMBZ \ITERZ"
+	writes
+label3: 	pushg 21
+	pushg 0
+	equal
+pushi 1
+inf
+	jz label4
+	pushs "INPUTZ"
+	writes
+	pushg 21
+	writei
+	pushs " \n"
+	writes
+	pushgp
+	pushi 1
+	padd
+	pushg 21
+	read
+	atoi
+	storen
+	pushg 21
+	pushi 1
+	add
+	storeg 21
+jump label3
+label4: 	pushi 0
+	storeg 21
+label5: 	pushg 21
+	pushg 0
+	equal
+pushi 1
+inf
+	jz label6
+	pusha MAXMILIANZ
+	call
+	nop
+	pushgp
+	pushi 11
+	padd
+	pushg 21
+	pushgp
+	pushi 1
+	padd
+	pushg 23
+	loadn
+	storen
+	pushgp
+	pushi 1
+	padd
+	pushg 23
+	pushi 0
+	storen
+	pushg 21
+	pushi 1
+	add
+	storeg 21
+jump label5
+label6: 	pushi 0
+	storeg 21
+label7: 	pushg 21
+	pushg 0
+	equal
+pushi 1
+inf
+	jz label8
+	pushgp
+	pushi 11
+	padd
+	pushg 21
+	loadn
+	writei
+	pushs " \ITERZ"
+	writes
+	pushg 21
+	pushi 1
+	add
+	storeg 21
+jump label7
+label8: stop

@@ -1,0 +1,51 @@
+	pushi 0
+	pushi 0
+	pushi 0
+jump inic
+start
+inic: 	pushs "INZERTZ NUMB"
+	writes
+	read
+	atoi
+	storeg 0
+label1: 	pushg 0
+	pushi 0
+	equal
+pushi 1
+inf
+	jz label2
+	pushs "MOR"
+	writes
+	pushg 0
+	writei
+	pushs " \n"
+	writes
+	read
+	atoi
+	storeg 1
+	pushg 1
+	pushi 2
+	mod
+	pushi 1
+	equal
+	jz label0
+	pushs "IMP:"
+	writes
+	pushg 1
+	writei
+	pushs " \n"
+	writes
+	pushg 2
+	pushi 1
+	add
+	storeg 2
+label0: 	pushg 0
+	pushi 1
+	sub
+	storeg 0
+jump label1
+label2: 	pushs "QUANTZ: "
+	writes
+	pushg 2
+	writei
+stop

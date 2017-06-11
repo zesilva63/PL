@@ -1,0 +1,13 @@
+Int NUMBR;
+Int VECZ[5];
+HICODE
+
+NUMBR = 35;
+VECZ[1+1] = 1 + 2;
+VECZ[0] = 5;
+VECZ[1] = NUMBR;
+VECZ[4] = VECZ[1] + VECZ[0];
+
+VISIVEL VECZ[4];
+
+KTHKBYE

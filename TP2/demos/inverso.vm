@@ -1,0 +1,57 @@
+	pushi 10
+	pushn 10
+	pushi 0
+jump inic
+start
+inic: 	pushs "TELZ"
+	writes
+	pushg 0
+	writei
+	pushs " NUMBZ \n"
+	writes
+label0: 	pushg 11
+	pushg 0
+	equal
+pushi 1
+inf
+	jz label1
+	pushs "INPUTZ"
+	writes
+	pushg 11
+	writei
+	pushs " \n"
+	writes
+	pushgp
+	pushi 1
+	padd
+	pushg 11
+	read
+	atoi
+	storen
+	pushg 11
+	pushi 1
+	add
+	storeg 11
+jump label0
+label1: 	pushg 0
+	pushi 1
+	sub
+	storeg 11
+label2: 	pushg 11
+	pushi 0
+	supeq
+	jz label3
+	pushgp
+	pushi 1
+	padd
+	pushg 11
+	loadn
+	writei
+	pushs "  "
+	writes
+	pushg 11
+	pushi 1
+	sub
+	storeg 11
+jump label2
+label3: stop

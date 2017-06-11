@@ -17,7 +17,7 @@
 
 #define YYPURE 0
 
-#line 2 "strz.y"
+#line 2 "progz.y"
   #define _GNU_SOURCE
   #include <string.h>
   #include <stdio.h>
@@ -43,7 +43,7 @@
     char *end;
   } SString;
 
-#line 29 "strz.y"
+#line 29 "progz.y"
 #ifdef YYSTYPE
 #undef  YYSTYPE_IS_DECLARED
 #define YYSTYPE_IS_DECLARED 1
@@ -329,7 +329,7 @@ typedef struct {
 } YYSTACKDATA;
 /* variables for the parser stack */
 static YYSTACKDATA yystack;
-#line 112 "strz.y"
+#line 112 "progz.y"
 
 #include "lex.yy.c"
 
@@ -589,189 +589,189 @@ yyreduce:
     switch (yyn)
     {
 case 1:
-#line 42 "strz.y"
+#line 42 "progz.y"
 	{ printf("%sjump inic\n%sstart\ninic: %sstop\n", yystack.l_mark[-4].s, yystack.l_mark[-3].s, yystack.l_mark[-1].s); }
 break;
 case 2:
-#line 45 "strz.y"
+#line 45 "progz.y"
 	{ yyval.s = yystack.l_mark[-1].s; }
 break;
 case 3:
-#line 46 "strz.y"
+#line 46 "progz.y"
 	{ asprintf(&yyval.s, "%s%s", yystack.l_mark[-2].s, yystack.l_mark[0].s); }
 break;
 case 4:
-#line 49 "strz.y"
+#line 49 "progz.y"
 	{ asprintf(&yyval.s, "\tpushi 0\n"); addVar(yystack.l_mark[0].s); }
 break;
 case 5:
-#line 50 "strz.y"
+#line 50 "progz.y"
 	{ asprintf(&yyval.s, "\tpushi %d\n", yystack.l_mark[0].n); addVar(yystack.l_mark[-2].s); }
 break;
 case 6:
-#line 51 "strz.y"
+#line 51 "progz.y"
 	{ asprintf(&yyval.s, "\tpushn %d\n", yystack.l_mark[-1].n); addVector(yystack.l_mark[-3].s, yystack.l_mark[-1].n, 0);}
 break;
 case 7:
-#line 52 "strz.y"
+#line 52 "progz.y"
 	{ asprintf(&yyval.s, "\tpushn %d\n", yystack.l_mark[-4].n * yystack.l_mark[-1].n); addVector(yystack.l_mark[-6].s, yystack.l_mark[-4].n, yystack.l_mark[-1].n);}
 break;
 case 8:
-#line 55 "strz.y"
+#line 55 "progz.y"
 	{ yyval.s = yystack.l_mark[0].s; }
 break;
 case 9:
-#line 56 "strz.y"
+#line 56 "progz.y"
 	{ asprintf(&yyval.s, "%s%s", yystack.l_mark[-1].s, yystack.l_mark[0].s); }
 break;
 case 10:
-#line 57 "strz.y"
+#line 57 "progz.y"
 	{ yyval.s = ""; }
 break;
 case 11:
-#line 60 "strz.y"
+#line 60 "progz.y"
 	{ asprintf(&yyval.s, "%s: nop\n%s\treturn\n", yystack.l_mark[-3].s, yystack.l_mark[-1].s); }
 break;
 case 12:
-#line 63 "strz.y"
+#line 63 "progz.y"
 	{ yyval.s = yystack.l_mark[0].s; }
 break;
 case 13:
-#line 64 "strz.y"
+#line 64 "progz.y"
 	{ asprintf(&yyval.s, "%s%s", yystack.l_mark[-1].s, yystack.l_mark[0].s); }
 break;
 case 14:
-#line 66 "strz.y"
+#line 66 "progz.y"
 	{ asprintf(&yyval.s, "%s\twritei\n", yystack.l_mark[-1].s);}
 break;
 case 15:
-#line 67 "strz.y"
+#line 67 "progz.y"
 	{ asprintf(&yyval.s, "\tpushs \"%s\"\n\twrites\n", yystack.l_mark[-2].s); }
 break;
 case 16:
-#line 68 "strz.y"
+#line 68 "progz.y"
 	{ asprintf(&yyval.s, "%s\tread\n\tatoi\n\%s", yystack.l_mark[-1].ss.begin, yystack.l_mark[-1].ss.end); }
 break;
 case 17:
-#line 69 "strz.y"
+#line 69 "progz.y"
 	{ asprintf(&yyval.s, "%s%s%s", yystack.l_mark[-3].ss.begin, yystack.l_mark[-1].s, yystack.l_mark[-3].ss.end); }
 break;
 case 18:
-#line 70 "strz.y"
+#line 70 "progz.y"
 	{ asprintf(&yyval.s, "%s\tjz label%d\n%slabel%d: ", yystack.l_mark[-4].s, label,
                                            yystack.l_mark[-1].s, label); label++; }
 break;
 case 19:
-#line 72 "strz.y"
+#line 72 "progz.y"
 	{ asprintf(&yyval.s, "%s\tjz label%d\n%sjump label%d\nlabel%d: %slabel%d: ",
               yystack.l_mark[-8].s, label, yystack.l_mark[-5].s, label + 1, label, yystack.l_mark[-1].s, label + 1); label += 2; }
 break;
 case 20:
-#line 74 "strz.y"
+#line 74 "progz.y"
 	{ asprintf(&yyval.s, "label%d: %s\tjz label%d\n%sjump label%d\nlabel%d: ",
      label, yystack.l_mark[-4].s, label + 1, yystack.l_mark[-1].s, label, label + 1); label += 2; }
 break;
 case 21:
-#line 76 "strz.y"
+#line 76 "progz.y"
 	{ asprintf(&yyval.s, "\tpusha %s\n\tcall\n\tnop\n", yystack.l_mark[-1].s); }
 break;
 case 22:
-#line 77 "strz.y"
+#line 77 "progz.y"
 	{ yyval.s = ""; }
 break;
 case 23:
-#line 80 "strz.y"
+#line 80 "progz.y"
 	{ asprintf(&yyval.ss.begin, "");
                                       asprintf(&yyval.ss.end, "\tstoreg %d\n", getVar(yystack.l_mark[0].s)); }
 break;
 case 24:
-#line 82 "strz.y"
+#line 82 "progz.y"
 	{ asprintf(&yyval.ss.begin, "\tpushgp\n\tpushi %d\n\tpadd\n%s", getVector(yystack.l_mark[-3].s), yystack.l_mark[-1].s);
                                       asprintf(&yyval.ss.end, "\tstoren\n"); }
 break;
 case 25:
-#line 84 "strz.y"
+#line 84 "progz.y"
 	{ asprintf(&yyval.ss.begin, "\tpushgp\n\tpushi %d\n\tpadd\n%s\tpushi %d\n\tmul\n%s\tadd\n", getVector(yystack.l_mark[-6].s), yystack.l_mark[-4].s, getVectorCol(yystack.l_mark[-6].s), yystack.l_mark[-1].s);
                                       asprintf(&yyval.ss.end, "\tstoren\n"); }
 break;
 case 26:
-#line 87 "strz.y"
+#line 87 "progz.y"
 	{ yyval.s = yystack.l_mark[0].s; }
 break;
 case 27:
-#line 88 "strz.y"
+#line 88 "progz.y"
 	{ asprintf(&yyval.s, "%s%s\tadd\n", yystack.l_mark[-2].s, yystack.l_mark[0].s); }
 break;
 case 28:
-#line 89 "strz.y"
+#line 89 "progz.y"
 	{ asprintf(&yyval.s, "%s%s\tsub\n", yystack.l_mark[-2].s, yystack.l_mark[0].s); }
 break;
 case 29:
-#line 91 "strz.y"
+#line 91 "progz.y"
 	{ asprintf(&yyval.s, "%s%s\tmul\n", yystack.l_mark[-2].s, yystack.l_mark[0].s); }
 break;
 case 30:
-#line 92 "strz.y"
+#line 92 "progz.y"
 	{ asprintf(&yyval.s, "%s%s\tdiv\n", yystack.l_mark[-2].s, yystack.l_mark[0].s); }
 break;
 case 31:
-#line 93 "strz.y"
+#line 93 "progz.y"
 	{ asprintf(&yyval.s, "%s%s\tmod\n", yystack.l_mark[-2].s, yystack.l_mark[0].s); }
 break;
 case 32:
-#line 94 "strz.y"
+#line 94 "progz.y"
 	{ asprintf(&yyval.s, "%s%s\tsup\n", yystack.l_mark[-2].s, yystack.l_mark[0].s); }
 break;
 case 33:
-#line 95 "strz.y"
+#line 95 "progz.y"
 	{ asprintf(&yyval.s, "%s%s\tinf\n", yystack.l_mark[-2].s, yystack.l_mark[0].s); }
 break;
 case 34:
-#line 96 "strz.y"
+#line 96 "progz.y"
 	{ asprintf(&yyval.s, "%s%s\tsupeq\n", yystack.l_mark[-3].s, yystack.l_mark[0].s); }
 break;
 case 35:
-#line 97 "strz.y"
+#line 97 "progz.y"
 	{ asprintf(&yyval.s, "%s%s\tinfeq\n", yystack.l_mark[-3].s, yystack.l_mark[0].s); }
 break;
 case 36:
-#line 98 "strz.y"
+#line 98 "progz.y"
 	{ asprintf(&yyval.s, "%s%s\tequal\npushi 1\ninf\n", yystack.l_mark[-3].s, yystack.l_mark[0].s); }
 break;
 case 37:
-#line 99 "strz.y"
+#line 99 "progz.y"
 	{ asprintf(&yyval.s, "%s%s\tequal\n", yystack.l_mark[-3].s, yystack.l_mark[0].s); }
 break;
 case 38:
-#line 100 "strz.y"
+#line 100 "progz.y"
 	{ asprintf(&yyval.s, "%s%s\tadd\n\tpushi 2\n\tequal\n", yystack.l_mark[-2].s, yystack.l_mark[0].s); }
 break;
 case 39:
-#line 101 "strz.y"
+#line 101 "progz.y"
 	{ asprintf(&yyval.s, "%s%s\tadd\n\tpushi 0\n\tsup\n", yystack.l_mark[-2].s, yystack.l_mark[0].s); }
 break;
 case 40:
-#line 102 "strz.y"
+#line 102 "progz.y"
 	{ yyval.s = yystack.l_mark[0].s; }
 break;
 case 41:
-#line 104 "strz.y"
+#line 104 "progz.y"
 	{ asprintf(&yyval.s, "\tpushi %d\n", yystack.l_mark[0].n); }
 break;
 case 42:
-#line 105 "strz.y"
+#line 105 "progz.y"
 	{ asprintf(&yyval.s, "\tpushg %d\n", getVar(yystack.l_mark[0].s)); }
 break;
 case 43:
-#line 106 "strz.y"
+#line 106 "progz.y"
 	{ asprintf(&yyval.s, "\tpushgp\n\tpushi %d\n\tpadd\n%s\tloadn\n", getVector(yystack.l_mark[-3].s), yystack.l_mark[-1].s); }
 break;
 case 44:
-#line 107 "strz.y"
+#line 107 "progz.y"
 	{ asprintf(&yyval.s, "\tpushgp\n\tpushi %d\n\tpadd\n%s\tpushi %d\n\tmul\n%s\tadd\n\tloadn\n", getVector(yystack.l_mark[-6].s), yystack.l_mark[-4].s, getVectorCol(yystack.l_mark[-6].s), yystack.l_mark[-1].s); }
 break;
 case 45:
-#line 108 "strz.y"
+#line 108 "progz.y"
 	{ yyval.s = yystack.l_mark[-1].s; }
 break;
 #line 778 "y.tab.c"

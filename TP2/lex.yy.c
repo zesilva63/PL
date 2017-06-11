@@ -683,7 +683,7 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "strz.lex"
+#line 1 "progz.lex"
 
 #line 689 "lex.yy.c"
 
@@ -913,7 +913,7 @@ YY_DECL
 		}
 
 	{
-#line 5 "strz.lex"
+#line 5 "progz.lex"
 
 #line 919 "lex.yy.c"
 
@@ -984,242 +984,242 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 6 "strz.lex"
+#line 6 "progz.lex"
 { BEGIN INTS; return Int; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 7 "strz.lex"
+#line 7 "progz.lex"
 { yylval.s = strdup(yytext); return VAR; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 8 "strz.lex"
+#line 8 "progz.lex"
 { yylval.n = atof(yytext); return NUM; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 9 "strz.lex"
+#line 9 "progz.lex"
 { return yytext[0]; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 10 "strz.lex"
+#line 10 "progz.lex"
 { BEGIN INITIAL; return yytext[0]; }
 	YY_BREAK
 case 6:
 /* rule 6 can match eol */
 YY_RULE_SETUP
-#line 11 "strz.lex"
+#line 11 "progz.lex"
 { }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 13 "strz.lex"
+#line 13 "progz.lex"
 { BEGIN FUNC; return f; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 14 "strz.lex"
+#line 14 "progz.lex"
 { yylval.s = strdup(yytext); return STRING; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 15 "strz.lex"
+#line 15 "progz.lex"
 { BEGIN INSTRUCTIONS; return yytext[0]; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 17 "strz.lex"
+#line 17 "progz.lex"
 { BEGIN INSTRUCTIONS; return HICODE; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 18 "strz.lex"
+#line 18 "progz.lex"
 { return HICODE; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 19 "strz.lex"
+#line 19 "progz.lex"
 { BEGIN INITIAL; return KTHKBYE; }
 	YY_BREAK
 case 13:
 /* rule 13 can match eol */
 YY_RULE_SETUP
-#line 20 "strz.lex"
+#line 20 "progz.lex"
 { }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 22 "strz.lex"
+#line 22 "progz.lex"
 { BEGIN WRITE; return VISIVEL; }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 23 "strz.lex"
+#line 23 "progz.lex"
 { return yytext[0]; }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 24 "strz.lex"
+#line 24 "progz.lex"
 { BEGIN INSTR; return yytext[0]; }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 25 "strz.lex"
+#line 25 "progz.lex"
 { yylval.s = strdup(yytext); return VAR; }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 26 "strz.lex"
+#line 26 "progz.lex"
 { yylval.n = atof(yytext); return NUM; }
 	YY_BREAK
 case 19:
 /* rule 19 can match eol */
 YY_RULE_SETUP
-#line 27 "strz.lex"
+#line 27 "progz.lex"
 { yylval.s = strdup(yytext); return STRING; }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 28 "strz.lex"
+#line 28 "progz.lex"
 { BEGIN WRITE; return yytext[0]; }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 29 "strz.lex"
+#line 29 "progz.lex"
 { BEGIN INSTRUCTIONS; return yytext[0]; }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 30 "strz.lex"
+#line 30 "progz.lex"
 {  }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 33 "strz.lex"
+#line 33 "progz.lex"
 { BEGIN READ; return LEARNTHZ; }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 34 "strz.lex"
+#line 34 "progz.lex"
 { return yytext[0]; }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 35 "strz.lex"
+#line 35 "progz.lex"
 { yylval.s = strdup(yytext); return VAR; }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 36 "strz.lex"
+#line 36 "progz.lex"
 { yylval.n = atof(yytext); return NUM; }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 37 "strz.lex"
+#line 37 "progz.lex"
 { BEGIN INSTRUCTIONS; return yytext[0]; }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 38 "strz.lex"
+#line 38 "progz.lex"
 {  }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 40 "strz.lex"
+#line 40 "progz.lex"
 { BEGIN CALL; return call; }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 41 "strz.lex"
+#line 41 "progz.lex"
 { yylval.s = strdup(yytext); return STRING; }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 42 "strz.lex"
+#line 42 "progz.lex"
 { BEGIN INSTRUCTIONS; return yytext[0]; }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 43 "strz.lex"
+#line 43 "progz.lex"
 { }
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 45 "strz.lex"
+#line 45 "progz.lex"
 { BEGIN EXPR; yylval.s = strdup(yytext); return VAR; }
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 46 "strz.lex"
+#line 46 "progz.lex"
 { return yytext[0]; }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 47 "strz.lex"
+#line 47 "progz.lex"
 { yylval.n = atof(yytext); return NUM; }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 48 "strz.lex"
+#line 48 "progz.lex"
 { yylval.s = strdup(yytext); return VAR; }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 49 "strz.lex"
+#line 49 "progz.lex"
 { BEGIN INSTRUCTIONS; return yytext[0]; }
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 51 "strz.lex"
+#line 51 "progz.lex"
 { BEGIN COND; return yytext[0]; }
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 52 "strz.lex"
+#line 52 "progz.lex"
 { return yytext[0]; }
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 53 "strz.lex"
+#line 53 "progz.lex"
 { yylval.n = atof(yytext); return NUM; }
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 54 "strz.lex"
+#line 54 "progz.lex"
 { yylval.s = strdup(yytext); return VAR; }
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 55 "strz.lex"
+#line 55 "progz.lex"
 { BEGIN INSTRUCTIONS; return yytext[0]; }
 	YY_BREAK
 case 43:
 /* rule 43 can match eol */
 YY_RULE_SETUP
-#line 56 "strz.lex"
+#line 56 "progz.lex"
 { }
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 59 "strz.lex"
+#line 59 "progz.lex"
 { return yytext[0]; }
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 61 "strz.lex"
+#line 61 "progz.lex"
 { }
 	YY_BREAK
 case 46:
 /* rule 46 can match eol */
 YY_RULE_SETUP
-#line 62 "strz.lex"
+#line 62 "progz.lex"
 { }
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 63 "strz.lex"
+#line 63 "progz.lex"
 ECHO;
 	YY_BREAK
 #line 1226 "lex.yy.c"
@@ -2245,7 +2245,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 63 "strz.lex"
+#line 63 "progz.lex"
 
 
 

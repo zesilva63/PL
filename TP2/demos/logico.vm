@@ -1,7 +1,6 @@
 	pushi 0
 	pushi 0
 	pushi 0
-	pushi 0
 jump inic
 start
 inic: 	pushi 3
@@ -10,8 +9,6 @@ inic: 	pushi 3
 	storeg 1
 	pushi 1
 	storeg 2
-	pushi 2
-	storeg 3
 	pushg 0
 	pushg 2
 	supeq

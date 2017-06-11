@@ -1,0 +1,25 @@
+Int i = 10;
+Int a[10];
+Int n;
+HICODE
+
+VISIVEL "TELZ";
+VISIVEL i;
+VISIVEL " NUMBZ \n";
+
+
+$( n != i ){
+	VISIVEL "INPUTZ";
+	VISIVEL n;
+	VISIVEL " \n";
+	LEARNTHZ a[n];
+	n = n +1;
+}
+n = i-1;
+$( n >= 0 ){
+	VISIVEL a[n];
+	VISIVEL "  ";
+	n = n -1;
+}
+
+KTHKBYE

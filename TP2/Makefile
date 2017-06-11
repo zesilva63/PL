@@ -1,22 +1,21 @@
 IDIR = examples
 ODIR = demos
 
-_DEMOS = avg_max.vm max.vm maxof3.vm while.vm array.vm test.vm func.vm \
-				logical.vm order.vm sum.vm evens.vm
+_DEMOS = func.vm impares.vm inverso.vm logico.vm max.vm menor.vm ola.vm ordenar.vm produtorio.vm quadrado.vm vetor.vm
 DEMOS = $(patsubst %,$(ODIR)/%,$(_DEMOS))
 
-all: strz demos
+all: progz demos
 
-strz: strz.lex strz.y
-	flex strz.lex
-	yacc strz.y
-	gcc y.tab.c `pkg-config --cflags --libs glib-2.0` -o strz
+progz: progz.lex progz.y
+	flex progz.lex
+	yacc progz.y
+	gcc y.tab.c `pkg-config --cflags --libs glib-2.0` -o progz
 
-demos: strz.lex strz.y $(DEMOS)
+demos: progz.lex progz.y $(DEMOS)
 
-$(ODIR)/%.vm: $(IDIR)/%.stz strz.lex strz.y
-	./strz < $< > $@
+$(ODIR)/%.vm: $(IDIR)/%.pgz progz.lex progz.y
+	./progz < $< > $@
 
 clean:
-	rm -f y.tab.c lex.yy.c strz
+	rm -f y.tab.c lex.yy.c progz
 	rm -f demos/*.vm

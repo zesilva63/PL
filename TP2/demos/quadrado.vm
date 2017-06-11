@@ -1,0 +1,79 @@
+	pushn 4
+jump inic
+start
+inic: 	pushs "PUTZ 4 NUMB\n"
+	writes
+	pushgp
+	pushi 0
+	padd
+	pushi 0
+	read
+	atoi
+	storen
+	pushgp
+	pushi 0
+	padd
+	pushi 1
+	read
+	atoi
+	storen
+	pushgp
+	pushi 0
+	padd
+	pushi 2
+	read
+	atoi
+	storen
+	pushgp
+	pushi 0
+	padd
+	pushi 3
+	read
+	atoi
+	storen
+	pushgp
+	pushi 0
+	padd
+	pushi 0
+	loadn
+	pushgp
+	pushi 0
+	padd
+	pushi 1
+	loadn
+	equal
+	pushgp
+	pushi 0
+	padd
+	pushi 2
+	loadn
+	pushgp
+	pushi 0
+	padd
+	pushi 3
+	loadn
+	equal
+	add
+	pushi 2
+	equal
+	pushgp
+	pushi 0
+	padd
+	pushi 1
+	loadn
+	pushgp
+	pushi 0
+	padd
+	pushi 2
+	loadn
+	equal
+	add
+	pushi 2
+	equal
+	jz label0
+	pushs "TRUEZ\n"
+	writes
+jump label1
+label0: 	pushs "FALZE\n"
+	writes
+label1: stop

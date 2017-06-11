@@ -1,0 +1,70 @@
+	pushi 0
+	pushn 2
+jump inic
+start
+inic: 	pushs "HOW NUMBZ?\n"
+	writes
+	read
+	atoi
+	storeg 0
+label1: 	pushg 0
+	pushi 0
+	equal
+pushi 1
+inf
+	jz label2
+	pushs "MIZ THZ MHUZ NUMB"
+	writes
+	pushg 0
+	writei
+	pushs " \n"
+	writes
+	pushgp
+	pushi 1
+	padd
+	pushi 0
+	pushg 0
+	storen
+	pushgp
+	pushi 1
+	padd
+	pushi 1
+	read
+	atoi
+	storen
+	pushgp
+	pushi 1
+	padd
+	pushi 1
+	loadn
+	pushgp
+	pushi 1
+	padd
+	pushi 0
+	loadn
+	inf
+	jz label0
+	pushgp
+	pushi 1
+	padd
+	pushi 0
+	pushgp
+	pushi 1
+	padd
+	pushi 1
+	loadn
+	storen
+label0: 	pushg 0
+	pushi 1
+	sub
+	storeg 0
+jump label1
+label2: 	pushs "MINZ ITZ: "
+	writes
+	pushgp
+	pushi 1
+	padd
+	pushi 0
+	loadn
+	writei
+stop

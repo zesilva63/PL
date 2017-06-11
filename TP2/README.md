@@ -1,2 +1,1 @@
-# SIPL
-Simple Imperative Programming Language.
+ITZ A PROGZ LANGZ  THTZ EAZE TZ READZ

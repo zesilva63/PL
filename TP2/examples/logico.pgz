@@ -1,0 +1,18 @@
+Int A;
+Int B;
+Int E;
+HICODE
+
+A = 3;
+B = 5;
+E = 1;
+
+?((A >= E) & (E <= B)) { VISIVEL "True AND\n"; }
+?((A >= E) | (E <= B)) { VISIVEL "True OR1\n"; }
+?((A >= E) | (E > B))  { VISIVEL "True OR2\n"; }
+?((A <= E) & (E < = B)){ VISIVEL "False AND\n";}
+?((A < E) | (E > B))   { VISIVEL "False OR\n"; }
+
+
+
+KTHKBYE
